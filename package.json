@@ -1,0 +1,33 @@
+{
+  "name": "@smartcar/prettier-config",
+  "version": "0.0.0",
+  "description": "Smartcar's prettier configuration",
+  "keywords": [
+    "prettier-config",
+    "smartcar"
+  ],
+  "homepage": "https://github.com/smartcar/prettier-config#readme",
+  "bugs": {
+    "url": "https://github.com/smartcar/prettier-config/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smartcar/prettier-config.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Smartcar",
+    "email": "hello@smartcar.com",
+    "url": "https://smartcar.com"
+  },
+  "main": "prettier.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=12.14.0",
+    "npm": ">=6.13.4"
+  }
+}
