@@ -26,3 +26,7 @@ jobs:
         # check package.json sorting
         - sort-package-json
         - if [[ -n "$(git diff --name-only | grep ^package.json)" ]]; then echo "please run \"npm run lint\""; exit 1; fi
+
+    - stage: publish
+      node_js: "12"
+      script: NPM_TOKEN=$GH_TOKEN semantic-release
