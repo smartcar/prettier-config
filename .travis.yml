@@ -1,32 +1,33 @@
 language: node_js
 
 node_js:
-  - "12"
+  - '12'
 
 cache:
   directories:
-    - "$HOME/.npm"
+    - '$HOME/.npm'
 
 if: tag IS blank # do not build tags
 
 notifications:
   slack:
-    secure: "C6fyNKjAihy7g3G9kB737UTTjy+6/r7QzJEA0Vj4/umCz/58xxRGklA7tgcCjFq4/PpRvOTMx554frUrlRzyjnVNAYglKALM7IDhfTob7DqWyx4HLuo/a5FsVAM9I5Npyg2Mtg2sr6eGW7UnSFzHTZf8GXYwt457Osq3tt8jeCerTXmCtgbkPSAYCBdJLWn0xEIwGm8qCVk8+L8V7rdPdXNI7Tkqvkc/Jda1AtymJAznW32bWSbCqZd4GJisMVAhNlRphjCPgmj9W/DKx8yU8jsv+n7YTN2aHv3jKrC8U8UEFSuybH0uC6IenL8Y0H0JcBhWmf+OGQL3gd2shi0tAFdsE1JM04jYngeyIEZfCVZ6F51q4zB0gaP4O7zf+ebpbBor0bjhsmzpaaMlQ78jeFr3/0cNHj+luz9e2oCV5paicXOiQNrtE+uIZCGSrLhY0E/c0uRAFh7ZNf/cYmWA6Cmq4/LIBZ3oZAI0bo1NeN40fLJ9IeGk3KwslnHZdD1XjPOrZ1Ngom3Qt0RcVkrqo2BzaM3iRPBXmjh71+H3h7TzkgQzz7/5tQbgUAWEHzJuu0MoqVn2xxx1dW+AfxIGkAa5exL2ltSbcK/p66lFIhSB749K6iD1KFOUFoR+orMhEWBj5J/KBScXmd26cU5eJuQJITKI4Py9FlVZnbt6zgI="
+    secure: 'C6fyNKjAihy7g3G9kB737UTTjy+6/r7QzJEA0Vj4/umCz/58xxRGklA7tgcCjFq4/PpRvOTMx554frUrlRzyjnVNAYglKALM7IDhfTob7DqWyx4HLuo/a5FsVAM9I5Npyg2Mtg2sr6eGW7UnSFzHTZf8GXYwt457Osq3tt8jeCerTXmCtgbkPSAYCBdJLWn0xEIwGm8qCVk8+L8V7rdPdXNI7Tkqvkc/Jda1AtymJAznW32bWSbCqZd4GJisMVAhNlRphjCPgmj9W/DKx8yU8jsv+n7YTN2aHv3jKrC8U8UEFSuybH0uC6IenL8Y0H0JcBhWmf+OGQL3gd2shi0tAFdsE1JM04jYngeyIEZfCVZ6F51q4zB0gaP4O7zf+ebpbBor0bjhsmzpaaMlQ78jeFr3/0cNHj+luz9e2oCV5paicXOiQNrtE+uIZCGSrLhY0E/c0uRAFh7ZNf/cYmWA6Cmq4/LIBZ3oZAI0bo1NeN40fLJ9IeGk3KwslnHZdD1XjPOrZ1Ngom3Qt0RcVkrqo2BzaM3iRPBXmjh71+H3h7TzkgQzz7/5tQbgUAWEHzJuu0MoqVn2xxx1dW+AfxIGkAa5exL2ltSbcK/p66lFIhSB749K6iD1KFOUFoR+orMhEWBj5J/KBScXmd26cU5eJuQJITKI4Py9FlVZnbt6zgI='
 
 install:
   - npm ci --ignore-scripts
   - env -i PATH=$PATH GH_TOKEN='' npm rebuild
 
-jobs:
-  include:
-    - stage: test
-      script:
-        - prettier --check '**/*.js'
+script:
+  - prettier --check '**/*.js'
 
-        # check package.json sorting
-        - sort-package-json
-        - if [[ -n "$(git diff --name-only | grep ^package.json)" ]]; then echo "please run \"npm run lint\""; exit 1; fi
+  # check package.json sorting
+  - sort-package-json
+  - if [[ -n "$(git diff --name-only | grep ^package.json)" ]]; then echo "please run \"npm run lint\""; exit 1; fi
 
-    - stage: publish
-      node_js: "12"
-      script: NPM_TOKEN=$GH_TOKEN semantic-release
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: NPM_TOKEN=$GH_TOKEN semantic-release
+  on:
+    node_js: '12'
+    all_branches: true
