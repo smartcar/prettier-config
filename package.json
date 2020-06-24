@@ -22,7 +22,7 @@
   },
   "main": "prettier.config.js",
   "scripts": {
-    "lint": "prettier --write '**/*.js' && sort-package-json"
+    "lint": "prettier --write . && sort-package-json"
   },
   "dependencies": {},
   "devDependencies": {

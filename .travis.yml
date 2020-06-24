@@ -19,11 +19,8 @@ install:
   - env -i PATH=$PATH GH_TOKEN='' npm rebuild
 
 script:
-  - prettier --check '**/*.js'
-
-  # check package.json sorting
-  - sort-package-json
-  - if [[ -n "$(git diff --name-only | grep ^package.json)" ]]; then echo "please run \"npm run lint\""; exit 1; fi
+  - prettier --check .
+  - sort-package-json --check
 
 deploy:
   provider: script
