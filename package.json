@@ -24,11 +24,10 @@
   "scripts": {
     "lint": "prettier --write . && sort-package-json"
   },
-  "dependencies": {},
   "devDependencies": {
     "husky": "^4.0.2",
     "prettier": "^2.0.1",
-    "semantic-release": "^17.0.0",
+    "semantic-release": "^19.0.2",
     "sort-package-json": "^1.35.0"
   },
   "engines": {
