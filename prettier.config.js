@@ -11,12 +11,13 @@ module.exports = {
   singleQuote: true, // default: false
   quoteProps: 'as-needed',
   jsxSingleQuote: false,
-  trailingComma: 'all', // default: none
+  trailingComma: 'all', // default: es5
   bracketSpacing: true,
-  jsxBracketSameLine: false,
-  arrowParens: 'avoid',
+  bracketSameLine: false,
+  arrowParens: 'avoid', // default: always
   proseWrap: 'preserve',
   htmlWhitespaceSensitivity: 'css',
   vueIndentScriptAndStyle: false,
-  endOfLine: 'lf', // default: auto
+  endOfLine: 'lf',
+  embeddedLanguageFormatting: 'auto',
 };
