@@ -1,8 +1,11 @@
+dist: focal
+
 language: node_js
 
 node_js:
+  - '18'
+  - '16'
   - '14'
-  - '12'
 
 cache:
   directories:
@@ -27,5 +30,5 @@ deploy:
   skip_cleanup: true
   script: NPM_TOKEN=$GH_TOKEN semantic-release
   on:
-    node_js: '14'
+    node_js: '18'
     all_branches: true
