@@ -21,4 +21,5 @@
       execute_commands:
         - npx prettier --check .
         - npx sort-package-json --check
+        - echo 'HELLLO TEST'
       shell: BASH
