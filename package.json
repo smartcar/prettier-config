@@ -27,12 +27,12 @@
   },
   "devDependencies": {
     "husky": "^8.0.1",
-    "prettier": "^2.0.1",
-    "semantic-release": "^19.0.3",
+    "prettier": "^3.8.1",
+    "semantic-release": "^24.2.9",
     "sort-package-json": "^1.35.0"
   },
   "engines": {
-    "node": ">=14.15.0",
-    "npm": ">=8.3.0"
+    "node": ">=20",
+    "npm": ">=10"
   }
 }
